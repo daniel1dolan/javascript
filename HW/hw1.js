@@ -33,3 +33,29 @@
 //   return total;
 // }
 // console.log(totalAmount(100, "good"));
+
+//4. Print Numbers
+// function printNumbers(start, end) {
+//   for (var i = start; i <= end; i++) {
+//     console.log(i);
+//   }
+// }
+// printNumbers(1, 10);
+
+//5. Square
+// function printSquare(size) {
+//   for (var i = 0; i < size; i++) {
+//     console.log("*".repeat(size));
+//   }
+// }
+// printSquare(5);
+
+//6. Print a Box
+function printBox(width, height) {
+  console.log("*".repeat(width));
+  for (i = 0; i < height - 2; i++) {
+    console.log("*" + " ".repeat(width - 2) + "*");
+  }
+  console.log("*".repeat(width));
+}
+printBox(6, 4);
