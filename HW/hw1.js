@@ -51,11 +51,20 @@
 // printSquare(5);
 
 //6. Print a Box
-function printBox(width, height) {
-  console.log("*".repeat(width));
-  for (i = 0; i < height - 2; i++) {
-    console.log("*" + " ".repeat(width - 2) + "*");
-  }
-  console.log("*".repeat(width));
-}
-printBox(6, 4);
+// function printBox(width, height) {
+//   console.log("*".repeat(width));
+//   for (i = 0; i < height - 2; i++) {
+//     console.log("*" + " ".repeat(width - 2) + "*");
+//   }
+//   console.log("*".repeat(width));
+// }
+// printBox(6, 4);
+
+//7. Banner
+// function printBanner(text) {
+//   lenText = text.length;
+//   console.log("*".repeat(lenText + 4));
+//   console.log("* " + text + " *");
+//   console.log("*".repeat(lenText + 4));
+// }
+// printBanner("Welcome to DigitalCrafts");
