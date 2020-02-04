@@ -68,3 +68,106 @@
 //   console.log("*".repeat(lenText + 4));
 // }
 // printBanner("Welcome to DigitalCrafts");
+
+//8. Leetspeak
+// var leetTranslator = { A: 4, E: 3, G: 6, I: 1, O: 0, S: 5, T: 7 };
+// function leetspeak(word) {
+//   upWord = word.toUpperCase();
+//   container = "";
+//   for (i = 0; i < word.length; i++) {
+//     if (upWord[i] in leetTranslator == true) {
+//       container += leetTranslator[upWord[i]];
+//     } else {
+//       container += upWord[i];
+//     }
+//   }
+//   console.log(container);
+// }
+// leetspeak("leet");
+
+//9. Long-Vowels
+// function longLongVowels(word) {
+//   var longPhrase = word
+//     .replace(/aa/gi, "aaaa")
+//     .replace(/ee/gi, "eeee")
+//     .replace(/ii/gi, "iiii")
+//     .replace(/oo/gi, "oooo")
+//     .replace(/uu/gi, "uuuu");
+
+//   console.log(longPhrase);
+// }
+// longLongVowels("good");
+
+//10. Just the Positives
+// function positiveNumbers(array) {
+//   newArray = [];
+//   for (var i = 0; i < array.length; i++) {
+//     if (array[i] >= 0) {
+//       newArray.push(array[i]);
+//     }
+//   }
+//   console.log(newArray);
+// }
+// positiveNumbers([1, -3, 5, -3, 0]);
+
+//11. Caeser Cipher
+
+function caeserCipher(message, shift) {
+  message = message.toLowerCase();
+  var array = message.split(" ");
+  var newArray = [];
+  var alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+  if (shift > 25) {
+    shift = shift % 26;
+  }
+
+  for (var i = 0; i < array.length; i++) {
+    var word = [];
+    for (var j = 0; j < array[i].length; j++) {
+      var index = alphabet.indexOf(array[i][j]);
+      if (shift + index > 25) {
+        var letter = alphabet[index + shift - 26];
+      } else {
+        var letter = alphabet[index + shift];
+      }
+      word.push(letter);
+    }
+    newArray.push(word.join(""));
+  }
+  return newArray.join(" ");
+}
+var ciphered = caeserCipher(
+  "Genius without education is like silver in the mine",
+  13
+);
+
+//12. Caeser Cipher 2
+
+function caeserDecipher(message, shift) {
+  message = message.toLowerCase();
+  var array = message.split(" ");
+  var newArray = [];
+  var alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+  if (shift > 25) {
+    shift = shift % 26;
+  }
+
+  for (var i = 0; i < array.length; i++) {
+    var word = [];
+    for (var j = 0; j < array[i].length; j++) {
+      var index = alphabet.indexOf(array[i][j]);
+      if (shift > index) {
+        var letter = alphabet[index - shift + 26];
+      } else {
+        var letter = alphabet[index - shift];
+      }
+      word.push(letter);
+    }
+    newArray.push(word.join(""));
+  }
+  console.log(newArray.join(" "));
+}
+
+var deciphered = caeserDecipher(ciphered, 13);
