@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .header {
+        background-color: blue;
+        color: white;
+        min-height: 150px;
+        text-align: left;
+        padding: 15px;
+        margin: 15px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      .spaced {
+        margin: 30px;
+      }
+      .content {
+        background-color: grey;
+        min-height: 150px;
+        color: black;
+        margin: 30px;
+        padding: 15px;
+      }
+      .review {
+        background-color: white;
+        min-height: 100px;
+        margin-top: 30px;
+        margin-left: 30px;
+        padding: 30px
+        color: black;
+      }
+      .product {
+        color: blue;
+        font-size: 23px;
+        font-weight: bold;
+      }
+      .feedback {
+        background-color: orange;
+        color: white;
+        min-height: 25px;
+        text-align: left;
+        margin-left: 25px;
+        margin-right: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+    <script>
+      var headerDiv = document.createElement("div");
+      headerDiv.setAttribute("class", "header");
+      headerDiv.innerHTML =
+        "<h1 class=spaced>High On Coding</h1> <h3 class=spaced>Home</h4> <h3 class=spaced>Categories</h4>";
+      var containerDiv = document.querySelector(".container");
+      containerDiv.append(headerDiv);
+
+      var contentDiv = document.createElement("div");
+      contentDiv.setAttribute("class", "content");
+      contentDiv.innerHTML =
+        "<h2>Curse of the Current Reviews</h2> <br> When you want to buy an application from Apple...";
+      containerDiv.append(contentDiv);
+
+      var reviewDiv = document.createElement("div");
+      reviewDiv.setAttribute("class", "review");
+      reviewDiv.innerHTML =
+        "<div class=product>Hello WatchKit</div> <br> Last month apple released blah blah blah...";
+      containerDiv.append(reviewDiv);
+
+      var feedbackDiv = document.createElement("div");
+      feedbackDiv.setAttribute("class", "feedback");
+      feedbackDiv.innerHTML = "12 Comments 124 likes";
+      containerDiv.append(feedbackDiv);
+
+      var reviewDiv = document.createElement("div");
+      reviewDiv.setAttribute("class", "review");
+      reviewDiv.innerHTML =
+        "<div class=product>Introduction to Swift</div> <br> Last month swift released blah blah blah...";
+      containerDiv.append(reviewDiv);
+
+      var feedbackDiv = document.createElement("div");
+      feedbackDiv.setAttribute("class", "feedback");
+      feedbackDiv.innerHTML = "15 Comments 45 likes";
+      containerDiv.append(feedbackDiv);
+    </script>
+  </body>
+</html>
