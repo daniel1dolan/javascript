@@ -83,3 +83,105 @@
 //   }
 // }
 // good(people);
+
+//7. Sort an Array
+// var people = [
+//   "Dom",
+//   "Lyn",
+//   "Kirk",
+//   "Autumn",
+//   "Trista",
+//   "Jesslyn",
+//   "Kevin",
+//   "John",
+//   "Eli",
+//   "Juan",
+//   "Robert",
+//   "Keyur",
+//   "Jason",
+//   "Che",
+//   "Ben"
+// ];
+// function sorter(array) {
+//   let sorted = array.sort();
+//   console.log(sorted);
+// }
+// sorter(people);
+
+//8. Sort an array 2
+// var people = [
+//   "Dom",
+//   "Lyn",
+//   "Kirk",
+//   "Autumn",
+//   "Trista",
+//   "Jesslyn",
+//   "Kevin",
+//   "John",
+//   "Eli",
+//   "Juan",
+//   "Robert",
+//   "Keyur",
+//   "Jason",
+//   "Che",
+//   "Ben"
+// ];
+// let sorter = function(array) {
+//   array.sort(function(a, b) {
+//     return a.length - b.length;
+//   });
+//   return array;
+// };
+// let peopleSort = sorter(people);
+// console.log(peopleSort);
+
+//9. Sort an array 3
+// var arr = [
+//   [1, 3, 4],
+//   [2, 4, 6, 8],
+//   [3, 6]
+// ];
+
+// let sum = function(array) {
+//   let result = 0;
+//   for (let i = 0; i < array.length; i++) {
+//     result += array[i];
+//   }
+//   return result;
+// };
+
+// arr.sort(function(a, b) {
+//   return sum(a) - sum(b);
+// });
+// console.log(arr);
+
+//10. 3 Times
+// let fun = function() {
+//   console.log("hello world");
+// };
+
+// function call3Times(fun) {
+//   fun();
+//   fun();
+//   fun();
+// }
+
+// call3Times(fun);
+
+//13. Acronym
+// function acronym(array) {
+//   let acc = array.map(element => element[0]).join("");
+//   console.log(acc);
+// }
+// acronym([
+//   "Hen",
+//   "elephant",
+//   "llama",
+//   "leopard",
+//   "ostrich",
+//   "Whale",
+//   "octopus",
+//   "rabbit",
+//   "lion",
+//   "dog"
+// ]);
