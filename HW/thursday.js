@@ -168,6 +168,29 @@
 
 // call3Times(fun);
 
+//11. N-times
+// function nTimes(number, funct) {
+//   for (let i = 0; i < number; i++) {
+//     funct();
+//   }
+// }
+// let hello = function() {
+//   console.log("Hello World!");
+// };
+
+// nTimes(5, hello);
+
+//12. Sum an Array
+// let sum = function(array) {
+//   let result = 0;
+//   for (let i = 0; i < array.length; i++) {
+//     result += array[i];
+//   }
+//   return result;
+// };
+
+// console.log(sum([1, 2, 3]));
+
 //13. Acronym
 // function acronym(array) {
 //   let acc = array.map(element => element[0]).join("");
