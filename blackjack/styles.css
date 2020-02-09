@@ -1,0 +1,44 @@
+html {
+  background: url("felt-table.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#dealer-hand {
+  width: 70%;
+  height: 200px;
+  /* background-color: rgba(3, 209, 30, 0.6); */
+  background-color: hsla(155, 91%, 44%, 0.6);
+}
+#dealer-hand img {
+  margin: 15px;
+}
+#table {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  flex-direction: column;
+  margin: 75px;
+}
+#player-hand {
+  width: 70%;
+  height: 200px;
+  background-color: hsla(155, 91%, 44%, 0.6);
+}
+#player-hand img {
+  margin: 15px;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: start;
+  margin: 30px;
+}
+.buttons button {
+  margin: 10px;
+  height: 25px;
+  width: auto;
+  border-radius: 12px;
+}
