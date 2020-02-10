@@ -4,9 +4,10 @@ let dealButton = document.querySelector("#deal-button");
 let hitButton = document.querySelector("#hit-button");
 let messagesD = document.querySelector("#messages");
 let standButton = document.querySelector("#stand-button");
-console.log(dealButton);
-console.log(dealerHandD);
-console.log(playerHandD);
+let up10 = document.querySelector(".up10");
+let down10 = document.querySelector(".down10");
+let betD = document.querySelector("#bet-amount");
+let moneyD = document.querySelector("#money-amount");
 
 class Deck {
   constructor() {
@@ -44,6 +45,37 @@ class Deck {
     return this.deck.pop();
   }
 }
+
+class Bet {
+  constructor() {
+    this.money = 500;
+    this.bet = 0;
+  }
+}
+
+const beto = new Bet();
+
+up10.addEventListener("click", function() {
+  beto.bet += 10;
+  beto.money -= 10;
+  betD.textContent = beto.bet;
+  moneyD.textContent = beto.money;
+  console.log(beto.bet);
+});
+
+down10.addEventListener("click", function() {
+  if (beto.bet == 0) {
+    pass;
+  } else {
+    beto.bet -= 10;
+    beto.money += 10;
+    betD.textContent = beto.bet;
+    moneyD.textContent = beto.money;
+  }
+});
+
+betD.textContent = beto.bet;
+moneyD.textContent = beto.money;
 
 class Player {
   constructor() {
