@@ -298,7 +298,7 @@ function calculatePoints(person) {
   console.log(hitButton.disabled == true);
   if (person == player) {
     playerPointsD.textContent = person.points;
-  } else if (hitButton.disabled == true) {
+  } else if (standButton.disabled == true) {
     dealerPointsD.textContent = person.points;
   } else {
     dealerPointsD.textContent = person.hand[1]["points"];
