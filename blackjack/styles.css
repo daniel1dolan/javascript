@@ -7,12 +7,13 @@ html {
 }
 #dealer-hand {
   width: 70%;
-  height: 200px;
+  height: 180px;
   /* background-color: rgba(3, 209, 30, 0.6); */
   /* background-color: hsla(155, 91%, 44%, 0.6); */
 }
 #dealer-hand img {
   margin: 15px;
+  visibility: hidden;
 }
 .bets {
   display: flex;
@@ -30,11 +31,12 @@ html {
 }
 #player-hand {
   width: 70%;
-  height: 200px;
+  height: 180px;
   /* background-color: hsla(155, 91%, 44%, 0.6); */
 }
 #player-hand img {
   margin: 15px;
+  visibility: hidden;
 }
 .buttons {
   display: flex;
@@ -48,6 +50,10 @@ html {
   height: 25px;
   width: auto;
   border-radius: 12px;
+}
+.buttons button:hover {
+  background-color: yellow;
+  cursor: pointer;
 }
 .alert {
   padding: 20px;
@@ -76,4 +82,77 @@ html {
 
 .closebtn:hover {
   color: black;
+}
+
+.slideExpandUp {
+  animation-name: slideExpandUp;
+  -webkit-animation-name: slideExpandUp;
+
+  animation-duration: 1.6s;
+  -webkit-animation-duration: 1.6s;
+
+  animation-timing-function: ease-out;
+  -webkit-animation-timing-function: ease -out;
+
+  visibility: visible !important;
+}
+
+@keyframes slideExpandUp {
+  0% {
+    transform: translateY(100%) scaleX(0.5);
+  }
+  30% {
+    transform: translateY(-8%) scaleX(0.5);
+  }
+  40% {
+    transform: translateY(2%) scaleX(0.5);
+  }
+  50% {
+    transform: translateY(0%) scaleX(1.1);
+  }
+  60% {
+    transform: translateY(0%) scaleX(0.9);
+  }
+  70% {
+    transform: translateY(0%) scaleX(1.05);
+  }
+  80% {
+    transform: translateY(0%) scaleX(0.95);
+  }
+  90% {
+    transform: translateY(0%) scaleX(1.02);
+  }
+  100% {
+    transform: translateY(0%) scaleX(1);
+  }
+}
+
+@-webkit-keyframes slideExpandUp {
+  0% {
+    -webkit-transform: translateY(100%) scaleX(0.5);
+  }
+  30% {
+    -webkit-transform: translateY(-8%) scaleX(0.5);
+  }
+  40% {
+    -webkit-transform: translateY(2%) scaleX(0.5);
+  }
+  50% {
+    -webkit-transform: translateY(0%) scaleX(1.1);
+  }
+  60% {
+    -webkit-transform: translateY(0%) scaleX(0.9);
+  }
+  70% {
+    -webkit-transform: translateY(0%) scaleX(1.05);
+  }
+  80% {
+    -webkit-transform: translateY(0%) scaleX(0.95);
+  }
+  90% {
+    -webkit-transform: translateY(0%) scaleX(1.02);
+  }
+  100% {
+    -webkit-transform: translateY(0%) scaleX(1);
+  }
 }

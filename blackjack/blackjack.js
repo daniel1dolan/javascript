@@ -51,21 +51,50 @@ class Bet {
     this.money = 500;
     this.bet = 0;
   }
+  betWin() {
+    this.money += 2 * this.bet;
+    this.bet = 0;
+    betD.textContent = this.bet;
+    moneyD.textContent = this.money;
+  }
+  betLoss() {
+    this.bet = 0;
+    betD.textContent = this.bet;
+    moneyD.textContent = this.money;
+  }
+  betDraw() {
+    this.money += this.bet;
+    this.bet = 0;
+    betD.textContent = this.bet;
+    moneyD.textContent = this.money;
+  }
+  betButtonReset() {
+    up10.disabled = false;
+  }
 }
 
 const beto = new Bet();
 
 up10.addEventListener("click", function() {
-  beto.bet += 10;
-  beto.money -= 10;
-  betD.textContent = beto.bet;
-  moneyD.textContent = beto.money;
-  console.log(beto.bet);
+  if (beto.money == 0) {
+    up10.disabled = true;
+  } else {
+    beto.bet += 10;
+    beto.money -= 10;
+    betD.textContent = beto.bet;
+    moneyD.textContent = beto.money;
+    down10.disabled = false;
+    console.log(beto.bet);
+  }
 });
+
+if (beto.bet == 0) {
+  down10.disabled = true;
+}
 
 down10.addEventListener("click", function() {
   if (beto.bet == 0) {
-    pass;
+    down10.disabled = true;
   } else {
     beto.bet -= 10;
     beto.money += 10;
@@ -87,9 +116,14 @@ class Player {
       let bustMessage = document.createElement("div");
       bustMessage.className = "alert";
       bustMessage.innerHTML =
-        '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span> <strong>You Busted!</strong>';
+        '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">Play Again</span> <strong>You Busted!</strong>';
       messagesD.appendChild(bustMessage);
+      beto.betLoss();
+      disableButtons();
       reseto();
+      beto.betButtonReset();
+    } else {
+      standButton.disabled = false;
     }
   }
 }
@@ -104,30 +138,42 @@ class Dealer {
       let bustMessage1 = document.createElement("div");
       bustMessage1.className = "alert success";
       bustMessage1.innerHTML =
-        '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span> <strong>Dealer Busted! You win!</strong>';
+        '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">Play Again</span> <strong>Dealer Busted! You win!</strong>';
       messagesD.appendChild(bustMessage1);
+      beto.betWin();
+      disableButtons();
       reseto();
+      beto.betButtonReset();
     } else if (this.points == player.points) {
       let bustMessage2 = document.createElement("div");
       bustMessage2.className = "alert info";
       bustMessage2.innerHTML =
-        '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span> <strong>Draw!</strong>';
+        '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">Play Again</span> <strong>Draw!</strong>';
       messagesD.appendChild(bustMessage2);
+      beto.betDraw();
+      disableButtons();
       reseto();
+      beto.betButtonReset();
     } else if (this.points > player.points) {
       let bustMessage3 = document.createElement("div");
       bustMessage3.className = "alert";
       bustMessage3.innerHTML =
-        '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span> <strong>Dealer Wins!</strong>';
+        '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">Play Again</span> <strong>Dealer Wins!</strong>';
       messagesD.appendChild(bustMessage3);
+      beto.betLoss();
+      disableButtons();
       reseto();
+      beto.betButtonReset();
     } else if (this.points < player.points) {
       let bustMessage4 = document.createElement("div");
       bustMessage4.className = "alert success";
       bustMessage4.innerHTML =
-        '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span> <strong>You Win!</strong>';
+        '<span class="closebtn" onclick="this.parentElement.style.display=\'none\';">Play Again</span> <strong>You Win!</strong>';
       messagesD.appendChild(bustMessage4);
+      beto.betWin();
+      disableButtons();
       reseto();
+      beto.betButtonReset();
     }
   }
   hitLogic() {
@@ -136,6 +182,7 @@ class Dealer {
       let img = document.createElement("img");
       img.setAttribute("src", dealer.hand[dealer.hand.length - 1]["imgFile"]);
       img.setAttribute("width", "100px");
+      img.setAttribute("class", "slideExpandUp");
       dealerHandD.appendChild(img);
       calculatePoints(this);
       calculatePoints(this);
@@ -162,16 +209,32 @@ dealButton.addEventListener("click", function(e) {
     let img = document.createElement("img");
     img.setAttribute("src", player.hand[i].imgFile);
     img.setAttribute("width", "100px");
+    img.setAttribute("class", "slideExpandUp");
     playerHandD.appendChild(img);
   }
   for (let i = 0; i < dealer.hand.length; i++) {
-    let img = document.createElement("img");
-    img.setAttribute("src", dealer.hand[i]["imgFile"]);
-    img.setAttribute("width", "100px");
-    dealerHandD.appendChild(img);
+    if (i == 0) {
+      let img = document.createElement("img");
+      img.setAttribute("src", "JPEG/Gray_back.jpg");
+      img.setAttribute("width", "100px");
+      img.setAttribute("class", "slideExpandUp");
+      img.setAttribute("id", "face-down");
+      dealerHandD.appendChild(img);
+    } else {
+      let img = document.createElement("img");
+      img.setAttribute("src", dealer.hand[i]["imgFile"]);
+      img.setAttribute("width", "100px");
+      img.setAttribute("class", "slideExpandUp");
+      dealerHandD.appendChild(img);
+    }
   }
   calculatePoints(player);
   calculatePoints(dealer);
+  up10.disabled = true;
+  down10.disabled = true;
+  dealButton.disabled = true;
+  hitButton.disabled = false;
+  standButton.disabled = false;
   console.log(player);
   console.log(dealer);
 });
@@ -182,6 +245,7 @@ hitButton.addEventListener("click", function(e) {
   let img = document.createElement("img");
   img.setAttribute("src", player.hand[player.hand.length - 1].imgFile);
   img.setAttribute("width", "100px");
+  img.setAttribute("class", "slideExpandUp");
   playerHandD.appendChild(img);
   calculatePoints(player);
   calculatePoints(dealer);
@@ -191,6 +255,11 @@ hitButton.addEventListener("click", function(e) {
 });
 
 standButton.addEventListener("click", function(e) {
+  let faceDownCard = document.querySelector("#face-down");
+  faceDownCard.setAttribute("src", dealer.hand[0]["imgFile"]);
+  disableButtons();
+  calculatePoints(dealer);
+  calculatePoints(dealer);
   dealer.hitLogic();
 });
 
@@ -226,10 +295,13 @@ function calculatePoints(person) {
     }
   }
   person.points = pointsC;
+  console.log(hitButton.disabled == true);
   if (person == player) {
     playerPointsD.textContent = person.points;
-  } else {
+  } else if (hitButton.disabled == true) {
     dealerPointsD.textContent = person.points;
+  } else {
+    dealerPointsD.textContent = person.hand[1]["points"];
   }
 }
 
@@ -237,6 +309,7 @@ function reseto() {
   let x = document.querySelector(".closebtn");
   let playerPointsD = document.querySelector("#player-points");
   let dealerPointsD = document.querySelector("#dealer-points");
+  disableButtons();
   x.addEventListener("click", function(e) {
     player.points = 0;
     dealer.points = 0;
@@ -249,7 +322,14 @@ function reseto() {
     messagesD.innerHTML = "";
     deck1.reset();
     deck1.shuffle();
+    dealButton.disabled = false;
   });
+}
+
+function disableButtons() {
+  dealButton.disabled = true;
+  hitButton.disabled = true;
+  standButton.disabled = true;
 }
 
 // deck1.shuffle();
