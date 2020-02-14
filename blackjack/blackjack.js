@@ -181,7 +181,7 @@ class Dealer {
       this.hand.push(deck1.deal());
       let img = document.createElement("img");
       img.setAttribute("src", dealer.hand[dealer.hand.length - 1]["imgFile"]);
-      img.setAttribute("width", "100px");
+      img.setAttribute("width", "50px");
       img.setAttribute("class", "slideExpandUp");
       dealerHandD.appendChild(img);
       calculatePoints(this);
@@ -208,7 +208,7 @@ dealButton.addEventListener("click", function(e) {
   for (let i = 0; i < player.hand.length; i++) {
     let img = document.createElement("img");
     img.setAttribute("src", player.hand[i].imgFile);
-    img.setAttribute("width", "100px");
+    img.setAttribute("width", "50px");
     img.setAttribute("class", "slideExpandUp");
     playerHandD.appendChild(img);
   }
@@ -216,25 +216,25 @@ dealButton.addEventListener("click", function(e) {
     if (i == 0) {
       let img = document.createElement("img");
       img.setAttribute("src", "JPEG/Gray_back.jpg");
-      img.setAttribute("width", "100px");
+      img.setAttribute("width", "50px");
       img.setAttribute("class", "slideExpandUp");
       img.setAttribute("id", "face-down");
       dealerHandD.appendChild(img);
     } else {
       let img = document.createElement("img");
       img.setAttribute("src", dealer.hand[i]["imgFile"]);
-      img.setAttribute("width", "100px");
+      img.setAttribute("width", "50px");
       img.setAttribute("class", "slideExpandUp");
       dealerHandD.appendChild(img);
     }
   }
-  calculatePoints(player);
-  calculatePoints(dealer);
   up10.disabled = true;
   down10.disabled = true;
   dealButton.disabled = true;
   hitButton.disabled = false;
   standButton.disabled = false;
+  calculatePoints(player);
+  calculatePoints(dealer);
   console.log(player);
   console.log(dealer);
 });
@@ -244,7 +244,7 @@ hitButton.addEventListener("click", function(e) {
   player.hand.push(deck1.deal());
   let img = document.createElement("img");
   img.setAttribute("src", player.hand[player.hand.length - 1].imgFile);
-  img.setAttribute("width", "100px");
+  img.setAttribute("width", "50px");
   img.setAttribute("class", "slideExpandUp");
   playerHandD.appendChild(img);
   calculatePoints(player);

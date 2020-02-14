@@ -1,12 +1,12 @@
 //1. Madlib
-// function madlib(name, subject) {
+// let madlib = (name, subject) => {
 //   return name + "'s favorite subject in school is " + subject;
-// }
+// };
 
 // console.log(madlib("Daniel", "philosophy"));
 
 //2. Tip Calculator
-// function tipAmount(bill, service) {
+// let tipAmount = (bill, service) => {
 //   switch (service) {
 //     case "good":
 //       tip = bill * 0.2;
@@ -24,22 +24,22 @@
 //       return "Enter good, fair, or bad for service.";
 //       break;
 //   }
-// }
+// };
 // console.log(tipAmount(20, "good"));
 
 //3. Tip Calculator 2
-// function totalAmount(bill, service) {
+// let totalAmount = (bill, service) => {
 //   total = tipAmount(bill, service) + bill;
 //   return total;
-// }
+// };
 // console.log(totalAmount(100, "good"));
 
 //4. Print Numbers
-// function printNumbers(start, end) {
+// let printNumbers = (start, end) => {
 //   for (var i = start; i <= end; i++) {
 //     console.log(i);
 //   }
-// }
+// };
 // printNumbers(1, 10);
 
 //5. Square
