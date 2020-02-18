@@ -23,8 +23,9 @@ $(() => {
         let house_name = house_helper[houses];
         console.log(house_data);
         $(`#${house_name}-info`).text(
-          house_data[houses].coatOfArms +
-            "<br></br>" +
+          house_data[houses].name +
+            " Coat of Arms: " +
+            house_data[houses].coatOfArms +
             " Sworn Members:" +
             house_data[houses].swornMembers.length
         );

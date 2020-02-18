@@ -8,4 +8,5 @@ img {
 }
 span {
   display: none;
+  border: black solid 3px;
 }
