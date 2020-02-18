@@ -31,7 +31,7 @@ $(() => {
           house.name +
             ". Coat of Arms: " +
             house.coatOfArms +
-            ". Sworn Members:" +
+            ". Sworn Members: " +
             house.swornMembers.length
         );
         incrementer++;
