@@ -1,39 +1,57 @@
 $(() => {
   let house_helper = [
     "Stark",
-    "Tyrell",
     "Arryn",
+    "Tully",
     "Greyjoy",
     "Lannister",
-    "Martell",
     "Baratheon",
-    "Tully",
+    "Tyrell",
+    "Martell",
     "Targaryen"
   ];
   let house_data = [];
   let ids = [362, 7, 395, 169, 229, 16, 398, 285, 378];
+  let promiseList = [];
   for (let houses in ids) {
     console.log(ids[houses]);
+    console.log(1);
     let url = `https://www.anapioficeandfire.com/api/houses/${ids[houses]}`;
-    fetch(url)
-      .then(response => response.json())
-      .then(obj => {
-        house_data.push(obj);
-        console.log(obj);
-        let house_name = house_helper[houses];
-        console.log(house_data);
+    promiseList.push(fetch(url));
+  }
+  let incrementer = 0;
+  Promise.all(promiseList)
+    .then(responses => Promise.all(responses.map(house => house.json())))
+    .then(houses =>
+      houses.forEach(house => {
+        console.log("hey guys");
+        console.log(house);
+        let house_name = house_helper[incrementer];
         $(`#${house_name}-info`).text(
-          house_data[houses].name +
-            " Coat of Arms: " +
-            house_data[houses].coatOfArms +
-            " Sworn Members:" +
-            house_data[houses].swornMembers.length
+          house.name +
+            ". Coat of Arms: " +
+            house.coatOfArms +
+            ". Sworn Members:" +
+            house.swornMembers.length
         );
-      });
-  }
+        incrementer++;
+      })
+    );
 
-  for (let houses in house_data) {
-  }
+  //   house_data.push(obj);
+  //   console.log(obj);
+  //   let house_name = house_helper[houses];
+  //   console.log(house_name);
+  //   console.log(2);
+  //   $(`#${house_name}-info`).text(
+  //     house_data[houses].name +
+  //       ". Coat of Arms: " +
+  //       house_data[houses].coatOfArms +
+  //       ". Sworn Members:" +
+  //       house_data[houses].swornMembers.length
+  //   );
+  // });
+
   let founder = i => {
     fetch(`${house_data[i].founder}`)
       .then(response => response.json())
@@ -41,7 +59,6 @@ $(() => {
         return obj[0].name;
       });
   };
-  console.log(house_data);
 
   $("#Arryn").click(() => {
     $("#Arryn-info").toggle();
