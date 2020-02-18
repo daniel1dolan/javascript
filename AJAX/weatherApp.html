@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <label for="City">Weather for:</label>
+      <input type="text" name="City" id="cityI" value="" />
+      <div id="temp-display"></div>
+      <button type="submit" id="submit-button">Fetch Weather</button>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      //8c3d8bf818c52d5d46964ed0d3c7b483
+      $(() => {
+        let submit = $("#submit-button");
+        let input = $("#cityI");
+        submit.click(() => {
+          let cityName = input.val();
+          console.log(cityName);
+          let url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=8c3d8bf818c52d5d46964ed0d3c7b483`;
+          console.log(url);
+          fetch(url)
+            .then(response => {
+              return response.json();
+            })
+            .then(weatherObj => {
+              let cels = weatherObj.main.temp - 273.15;
+              let degCR = Math.floor(cels);
+              console.log(degCR);
+              let degFR = Math.floor(degCR * 1.8 + 32);
+              console.log(degFR);
+              let display = $("#temp-display");
+              display.text("Temp: " + degFR.toString());
+            });
+        });
+      });
+    </script>
+  </body>
+</html>

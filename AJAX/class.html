@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    hello rufus
+    <ul></ul>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // fetch("http://jsonplaceholder.typicode.com/todos")
+      //   .then(response => response.json())
+      //   .then(jsonObj => console.log(jsonObj));
+
+      // fetch("http://jsonplaceholder.typicode.com/comments")
+      //   .then(response => response.json())
+      //   .then(obj => {
+      //     let li = obj.map(comment => {
+      //       return `<li>${comment.email}</li>`;
+      //     });
+
+      //     let ul = document.querySelector("ul");
+      //     ul.innerHTML = li.join("");
+      //   });
+      // $(() => {
+      //   $.get("http://jsonplaceholder.typicode.com/comments")
+      //     .done(response => {
+      //       console.log(response);
+      //       let $ul = $("ul");
+      //       response.forEach(comment => {
+      //         $ul.append(`<li>${comment.email}</li>`);
+      //       });
+      //     })
+      //     .then(error => {
+      //       console.log(error);
+      //     });
+      // });
+      //8c3d8bf818c52d5d46964ed0d3c7b483
+      let url = `http://api.openweathermap.org/data/2.5/weather?q=Houston&appid=8c3d8bf818c52d5d46964ed0d3c7b483`;
+      fetch(url)
+        .then(response => {
+          return response.json();
+        })
+        .then(weatherObj => {
+          console.log(weatherObj);
+          console.log(weatherObj.main.temp);
+          let cels = weatherObj.main.temp - 273.15;
+
+          let degCR = Math.floor(cels);
+          console.log(degCR);
+          let degFR = Math.floor(degCR * 1.8 + 32);
+          console.log(degFR);
+          let body = document.querySelector("body");
+          body.innerHTML = degFR.toString();
+        });
+    </script>
+  </body>
+</html>
