@@ -27,3 +27,4 @@ function anagramChecker(fw, sw) {
 }
 
 console.log(anagramChecker("angel", "anglel"));
+console.log(anagramChecker("bob", "bob"));
